@@ -1,0 +1,88 @@
+{
+  "main": {
+    "id": "e33033ed2b808e7d",
+    "type": "split",
+    "children": [
+      {
+        "id": "96bf9e2f182ce400",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Pheonix Project.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "454f3f76cb940238",
+    "type": "split",
+    "children": [
+      {
+        "id": "054dbf58174d860a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "24b300a83f495d23",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "27ee0fada092675a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5d3a9811cd0b8907",
+    "type": "split",
+    "children": [
+      {
+        "id": "a902547414195d1e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b971e110765dd160",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Pheonix Project.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "lastOpenFiles": [
+    "Pheonix Project.md",
+    "alpine_js_setup.md",
+    "Untitled.md",
+    "pheonix_auth.md",
+    "Pheonix Auth.md",
+    "NewPhoenixProject.md",
+    "FileCleanup.md",
+    "ErrorHelpers.md",
+    "New Phoenix Project.md"
+  ]
+}
