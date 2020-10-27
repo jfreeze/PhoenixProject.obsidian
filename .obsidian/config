@@ -18,5 +18,6 @@
   "showLineNumber": true,
   "useTab": false,
   "vimMode": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "enabledPlugins": []
 }
