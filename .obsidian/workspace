@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "new_phoenix_project.md",
+            "file": "Pheonix Project.md",
             "mode": "preview"
           }
         }
@@ -64,7 +64,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "new_phoenix_project.md"
+                "file": "Pheonix Project.md"
               }
             }
           }
@@ -75,8 +75,8 @@
     "width": 300
   },
   "lastOpenFiles": [
-    "new_phoenix_project.md",
     "Pheonix Project.md",
+    "new_phoenix_project.md",
     "alpine_js_setup.md",
     "Untitled.md",
     "pheonix_auth.md",
