@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "new_phoenix_project.md",
+            "file": "pheonix_auth.md",
             "mode": "preview"
           }
         }
@@ -64,7 +64,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "new_phoenix_project.md"
+                "file": "pheonix_auth.md"
               }
             }
           }
@@ -75,13 +75,13 @@
     "width": 300
   },
   "lastOpenFiles": [
-    "new_phoenix_project.md",
+    "pheonix_auth.md",
     "Pheonix Project.md",
+    "new_phoenix_project.md",
     "alpine_js_setup.md",
     "error_helpers.md",
     "file_cleanup.md",
     "Untitled.md",
-    "pheonix_auth.md",
     "Pheonix Auth.md",
     "NewPhoenixProject.md",
     "FileCleanup.md"
