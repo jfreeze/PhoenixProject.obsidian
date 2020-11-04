@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "96bf9e2f182ce400",
+        "id": "cde6c34ddd396c0a",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "pheonix_auth.md",
+            "file": "Pheonix Project.md",
             "mode": "preview"
           }
         }
@@ -48,7 +48,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 203.00868225097656
   },
   "right": {
     "id": "5d3a9811cd0b8907",
@@ -64,7 +64,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pheonix_auth.md"
+                "file": "Pheonix Project.md"
               }
             }
           }
@@ -72,14 +72,14 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 130.2312469482422
   },
   "lastOpenFiles": [
-    "pheonix_auth.md",
     "Pheonix Project.md",
-    "new_phoenix_project.md",
+    "pheonix_auth.md",
     "alpine_js_setup.md",
     "error_helpers.md",
+    "new_phoenix_project.md",
     "file_cleanup.md",
     "Untitled.md",
     "Pheonix Auth.md",

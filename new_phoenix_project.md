@@ -18,7 +18,8 @@ mix ecto.create
 ### Install TailWindCSS
 This also installs a full version of the tailwindcss config file for reference.
 ```bash
-npm install tailwindcss @tailwindcss/ui postcss-import postcss-loader --save-dev
+cd assets
+npm install tailwindcss @tailwindcss/ui postcss postcss-import postcss-loader --save-dev
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
@@ -41,6 +42,11 @@ _Note: Change the <my_app> to the name of your app directory!_
 ```
 
 #### Create `postcss.config.js`
+
+```bash
+touch postcss.config.js
+```
+
 ```javascript
 module.exports = {
   plugins: [
@@ -81,12 +87,15 @@ module.exports = {
 ####  Setup `app.scss`
 
 ```bash
-cd assets/css
+cd css
 mv app.scss live_view.scss
 # remove @import "./phoenix.css";
 ```
 
 #### Create `assets/css/app.scss`
+```bash
+touch app.scss
+```
 ```scss
 /* purgecss start ignore */
 
@@ -111,7 +120,7 @@ mix deps.get
 ```bash
 cd assets
 npm i
-npm run deploy
+npm run deploy 
 ./node_modules/webpack/bin/webpack.js --mode development
 cd ..
 mix phx.digest
