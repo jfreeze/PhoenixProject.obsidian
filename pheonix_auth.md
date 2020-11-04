@@ -1,11 +1,12 @@
 # Adding `phx_gen_auth` 
 
-Check hex.pm for latest phx_gen_auth 
+Check hex.pm for latest `phx_gen_auth` and add it to the project dependencies in `mix.exs`:
 ```elixir
 {:phx_gen_auth, "~> 0.5.0"}
 ```
 
-Compile so `phx.gen.auth` shows in mix and install `phx.gen.auth`
+Compile so `phx.gen.auth` shows in mix.
+install `phx.gen.auth` (this uses `argon2` for the encryption library.)
 
 ```bash
 mix deps.compile
@@ -36,4 +37,4 @@ config :argon2_elixir,
     parallelism: 2
 ```
 
-
+You can customize the params for memory and time using [`Argon2.Stats`](https://hexdocs.pm/argon2_elixir/Argon2.Stats.html)

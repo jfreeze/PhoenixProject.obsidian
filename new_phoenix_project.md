@@ -19,7 +19,7 @@ mix ecto.create
 This also installs a full version of the tailwindcss config file for reference.
 ```bash
 cd assets
-npm install tailwindcss @tailwindcss/ui postcss postcss-import postcss-loader --save-dev
+npm install tailwindcss @tailwindcss/typography @tailwindcss/ui postcss postcss-import postcss-loader --save-dev
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
@@ -38,7 +38,11 @@ _Note: Change the <my_app> to the name of your app directory!_
     "./js/**/*.js"
   ],
 
-  plugins: [require("@tailwindcss/ui")],
+  plugins: [
+    require("@tailwindcss/ui")],
+    require('@tailwindcss/typography'),
+  ]
+
 ```
 
 #### Create `postcss.config.js`
@@ -46,7 +50,7 @@ _Note: Change the <my_app> to the name of your app directory!_
 ```bash
 touch postcss.config.js
 ```
-
+Contents of `postcss.config.js`:
 ```javascript
 module.exports = {
   plugins: [
@@ -69,9 +73,8 @@ module.exports = {
 
 #### Add `postcss-loader` to  WebPack (`webpack.config.js`)
 
+Find the `module:{ rules: [ ...` section in `webpack.config.js` and add `postcss-loader`. (Note: order is important)
 ```javascript
-# add ‘postcss-loader’ to module/rules/use in webpack.config.js
-# Note: order is important
         {
           test: /\.[s]?css$/,
           use: [
@@ -89,13 +92,15 @@ module.exports = {
 ```bash
 cd css
 mv app.scss live_view.scss
-# remove @import "./phoenix.css";
+rm phoenix.css
 ```
+Remove the line `@import "./phoenix.css";` from `live_view.scss`.
 
 #### Create `assets/css/app.scss`
 ```bash
 touch app.scss
 ```
+Contents of `app.scss`:
 ```scss
 /* purgecss start ignore */
 
@@ -126,26 +131,7 @@ cd ..
 mix phx.digest
 ```
 
-#### Configure `mix.exs` `aliases`
-```elixir
-      test: [
-        "ecto.create --quiet",
-        "ecto.migrate --quiet",
-        "test --stale --max-failures 1 --trace --seed 0"
-      ],
-      "test.l": [
-        "ecto.create --quiet",
-        "ecto.migrate --quiet",
-        "test --listen-on-stdin --stale --max-failures 1 --trace --seed 0"
-      ],
-      ems: ["ecto.migrations"],
-      em: ["ecto.migrate"],
-      er: ["ecto.rollback"],
-      er2: ["ecto.rollback --step 2"],
-      er3: ["ecto.rollback --step 3"],
-      er4: ["ecto.rollback --step 4"]
-  ],
-```
+
 
 
 
