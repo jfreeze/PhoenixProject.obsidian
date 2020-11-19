@@ -1,4 +1,4 @@
-# Phoenix Project Creation
+## Base Phoenix Project Creation
 - [Create a New Phoenix Project](new_phoenix_project)
 - [Customize the environment](customize_environment.md)
 - [Add custom error helpers](error_helpers)
@@ -10,3 +10,17 @@
 	mix em
 	```
  
+## Customization of Project Framework
+- add custom `root.html.leex`
+
+### For top level nav
+- add menu
+
+### For Sidebar nav
+- add menu
+
+## Customization of Sign-in/Registration
+- add login menu
+- add sign-in page
+- add registration page
+- 

@@ -19,7 +19,7 @@ mix ecto.create
 This also installs a full version of the tailwindcss config file for reference.
 ```bash
 cd assets
-npm install tailwindcss @tailwindcss/typography @tailwindcss/ui postcss postcss-import postcss-loader --save-dev
+npm install tailwindcss@latest @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio @tailwindcss/ui postcss postcss-import postcss-loader autoprefixer --save-dev
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
@@ -30,16 +30,22 @@ npx tailwind init tailwindcss-full.js --full
 _Note: Change the <my_app> to the name of your app directory!_
 
 ```javascript
-  purge: [
-    "../lib/<my_app>/**/*.ex",
-    "../lib/<my_app>_web/**/*.ex",
-    "../lib/<my_app>_web/**/*.html.eex",
-    "../lib/<my_app>_web/**/*.html.leex",
-    "./js/**/*.js"
-  ],
+  purge: {
+    content: [
+      "../lib/**/*.html.eex",
+      "../lib/**/*.html.leex",
+      "../lib/**/*.ex",
+      "./js/**/*.js"
+    ],
 
+    // These options are passed through directly to PurgeCSS
+    options: {
+      // whitelist: ['opacity-75'],
+    }
+  },
+    
   plugins: [
-    require("@tailwindcss/ui")],
+    require("@tailwindcss/ui"),
     require('@tailwindcss/typography'),
   ]
 
@@ -100,17 +106,11 @@ Remove the line `@import "./phoenix.css";` from `live_view.scss`.
 ```bash
 touch app.scss
 ```
-Contents of `app.scss`:
+Contents of `app.scss`. Note that the comments are required if you want to prohibit purgecss from running. ((*Please switch to the new `layers` mode for 2.0.*))
 ```scss
-/* purgecss start ignore */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-
-/* purgecss end ignore */
-
 @import "tailwindcss/utilities";
-
 @import "live_view.scss";
 ```
 
@@ -125,7 +125,7 @@ mix deps.get
 ```bash
 cd assets
 npm i
-npm run deploy 
+npm run deploy # check size of app.css
 ./node_modules/webpack/bin/webpack.js --mode development
 cd ..
 mix phx.digest

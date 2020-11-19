@@ -18,5 +18,4 @@ Configure `mix.exs` `aliases`
       er2: ["ecto.rollback --step 2"],
       er3: ["ecto.rollback --step 3"],
       er4: ["ecto.rollback --step 4"]
-  ],
 ```
