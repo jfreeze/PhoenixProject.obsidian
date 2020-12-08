@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "notes-for-future-content.md",
+            "file": "Pheonix Project.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes-for-future-content.md",
+                "file": "Pheonix Project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,15 +85,15 @@
     "width": 130.2312469482422
   },
   "lastOpenFiles": [
-    "notes-for-future-content.md",
-    "Replace nprogress with topbar.md",
-    "alpine_js_setup.md",
-    "Untitled.md",
-    "Untitled 1.md",
-    "pheonix_auth.md",
     "Pheonix Project.md",
-    "new_phoenix_project.md",
     "error_helpers.md",
-    "deploy.md"
+    "alpine_js_setup.md",
+    "customize_environment.md",
+    "add_font_interval.md",
+    "Replace nprogress with topbar.md",
+    "new_phoenix_project.md",
+    "notes-for-future-content.md",
+    "Untitled.md",
+    "Untitled 1.md"
   ]
 }

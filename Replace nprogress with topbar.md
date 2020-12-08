@@ -6,6 +6,7 @@ cd assets
 npm i topbar
 ```
 
+Add topbar to `app.js` and replace `page-loading` event listeners.
 ```javascript
 // app.js
 // import NProgress from "nprogress"
@@ -24,5 +25,6 @@ window.addEventListener('phx:page-loading-stop', info => {
 Remove `nprogress.css` import from `live_view.css`
 
 ```
+/* live_view.css */
 delete => @import "../node_modules/nprogress/nprogress.css";
 ```

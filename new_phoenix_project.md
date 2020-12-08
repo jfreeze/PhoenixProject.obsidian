@@ -16,7 +16,7 @@ mix ecto.create
 ```
 
 ### Install TailWindCSS
-This also installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is ok to leave them in since they are not part of a production release.
+This installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is ok to leave them in since they are purged from the production release if not used.
 ```bash
 cd assets
 
@@ -68,7 +68,7 @@ plugins: [
 ```bash
 touch postcss.config.js
 ```
-Contents of `postcss.config.js`:
+
 ```javascript
 // postcss.config.js
 module.exports = {
@@ -86,6 +86,7 @@ module.exports = {
 # cwd assets/
 cd css
 mv app.scss live_view.css
+touch app.css
 rm phoenix.css
 ```
 
@@ -99,9 +100,6 @@ Change the `app.scss` reference in `app.js` to `app.css`.
 import "../css/app.css"
 ```
 
-```bash
-touch app.css
-```
 Contents of `app.css`. Note that the comments are required if you want to prohibit purgecss from running. ((*Please switch to the new `layers` mode for 2.0.*))
 ```css
 /* app.css */
@@ -111,7 +109,7 @@ Contents of `app.css`. Note that the comments are required if you want to prohib
 @import "live_view.css";
 ```
 
-#### Add deploy script (`package.json`)
+#### Update the deploy script.
 
 ```javascript
 // package.json
@@ -134,10 +132,6 @@ Find the `module:{ rules: [ ...` section in `webpack.config.js` and add `postcss
           ],
         }
 ```
-
-#### Replace nprogress 
-
-todo
 
 
 #### Update Dependencies

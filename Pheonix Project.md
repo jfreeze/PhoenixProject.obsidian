@@ -1,9 +1,10 @@
 ## Base Phoenix Project Creation
 - [Create a New Phoenix Project](new_phoenix_project)
+- [Add Font `inter val`](add_font_interval.md)
+- [Configure for AlpineJS](alpine_js_setup.md)
+- [Replace nprogress with topbar](Replace%20nprogress%20with%20topbar.md)
 - [Customize the environment](customize_environment.md)
 - [Add custom error helpers](error_helpers)
-- [Configure for AlpineJS](alpine_js_setup.md)
-- [Add Font `inter val`](add_font_interval.md)
 - [Add Authentication](pheonix_auth)
 - Migrate the db
 	```bash
