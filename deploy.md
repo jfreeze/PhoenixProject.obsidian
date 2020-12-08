@@ -5,7 +5,7 @@ The process uses the deploy server as the build server and requires that the dep
 Also, the setup requires that the original deploy needs to be done on the server.
 
 
-## Add deploy scripts
+## Add Deploy/Release scripts
 
 The Elixir script that runs before deploy - `config/releases.exs`
 ```elixir
@@ -36,6 +36,8 @@ config :car_lot, CarLot.Mailers.PostmarkMailer,
   adapter: Swoosh.Adapters.Postmark,
   api_key: System.get_env("POSTMARK_SERVER_API_TOKEN")
 ```
+
+#### Deploy
 
 The `bin/deploy.sh` script is a simple script when the production server is also the build server. The production server has a github deploy key and keeps a local copy of the repo. This facilitates fast compile times when deploying.
 ```bash
@@ -73,6 +75,8 @@ The `deploy.sh` script that launches the above script sits in the main directory
 
 ./bin/deploy.sh my_app my_app /apps/builds/my_app /apps/secrets/my_app/my_app.prod.secret.env.sh "MyApp.Release.migrate"
 ```
+
+#### Release
 
 The `bin/release.sh` script is call on the production machine from the `deploy.sh` script.
 
