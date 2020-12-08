@@ -5,7 +5,7 @@
 
 You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). Once you have the version, install Phoenix.
  
-`mix archive.install hex phx_new 1.5.6`
+`mix archive.install hex phx_new 1.5.7`
 
 ### Create Your Project
 
@@ -16,21 +16,29 @@ mix ecto.create
 ```
 
 ### Install TailWindCSS
-This also installs a full version of the tailwindcss config file for reference.
+This also installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is ok to leave them in since they are not part of a production release.
 ```bash
 cd assets
-npm install tailwindcss@latest @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio @tailwindcss/ui postcss postcss-import postcss-loader autoprefixer --save-dev
+
+npm install tailwindcss \
+   @tailwindcss/forms \
+   @tailwindcss/typography \
+   @tailwindcss/aspect-ratio \
+   postcss postcss-loader postcss-import \
+   autoprefixer --save-dev
+
+npm install alpinejs
+
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
 
 ### Customize TailWindCSS config
-#### Add Purge to `tailwind.config.js`
-
-_Note: Change the <my_app> to the name of your app directory!_
+Add `purge` and `plugins`  to `tailwind.config.js`
 
 ```javascript
-  purge: {
+// tailwind.config.js
+purge: {
     content: [
       "../lib/**/*.html.eex",
       "../lib/**/*.html.leex",
@@ -43,11 +51,15 @@ _Note: Change the <my_app> to the name of your app directory!_
       // whitelist: ['opacity-75'],
     }
   },
-    
-  plugins: [
-    require("@tailwindcss/ui"),
-    require('@tailwindcss/typography'),
+
+...
+
+plugins: [
+      require('@tailwindcss/forms'),
+      require('@tailwindcss/typography'),
+      require('@tailwindcss/aspect-ratio')
   ]
+
 
 ```
 
@@ -58,20 +70,52 @@ touch postcss.config.js
 ```
 Contents of `postcss.config.js`:
 ```javascript
+// postcss.config.js
 module.exports = {
-  plugins: [
-    require("postcss-import"),
-    require('tailwindcss'),
-    require('autoprefixer'),
-    require('postcss-nested')
-  ]
+    plugins: {
+        'postcss-import': {},
+        tailwindcss: {},
+        autoprefixer: {}
+    }
 }
+```
+
+#### Configure `app.css`
+
+```bash
+# cwd assets/
+cd css
+mv app.scss live_view.css
+rm phoenix.css
+```
+
+Remove the line `@import "./phoenix.css";` from `live_view.css`.
+
+Change the `app.scss` reference in `app.js` to `app.css`.
+
+```javascript
+// app.js
+// import "../css/app.scss"
+import "../css/app.css"
+```
+
+```bash
+touch app.css
+```
+Contents of `app.css`. Note that the comments are required if you want to prohibit purgecss from running. ((*Please switch to the new `layers` mode for 2.0.*))
+```css
+/* app.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "live_view.css";
 ```
 
 #### Add deploy script (`package.json`)
 
 ```javascript
-  "scripts": {
+// package.json
+"scripts": {
     "deploy": "NODE_ENV=production webpack --mode production",
     ...
   },
@@ -86,33 +130,15 @@ Find the `module:{ rules: [ ...` section in `webpack.config.js` and add `postcss
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader',
             'postcss-loader'
           ],
         }
 ```
 
+#### Replace nprogress 
 
-####  Setup `app.scss`
+todo
 
-```bash
-cd css
-mv app.scss live_view.scss
-rm phoenix.css
-```
-Remove the line `@import "./phoenix.css";` from `live_view.scss`.
-
-#### Create `assets/css/app.scss`
-```bash
-touch app.scss
-```
-Contents of `app.scss`. Note that the comments are required if you want to prohibit purgecss from running. ((*Please switch to the new `layers` mode for 2.0.*))
-```scss
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-@import "live_view.scss";
-```
 
 #### Update Dependencies
 ```bash
