@@ -123,6 +123,8 @@ import "../css/app.css"
 
 Find the `module:{ rules: [ ...` section in `webpack.config.js` and add `postcss-loader`. (Note: order is important)
 ```javascript
+// webpack.config.js
+   ...
         {
           test: /\.[s]?css$/,
           use: [
