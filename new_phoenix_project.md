@@ -1,5 +1,7 @@
 # New Phoenix Project Setup with TailwindCSS
 
+Note, these install instructions modify the default Phoenix project by opting to use PostCSS instead of SASS. If you choose to use SASS, you can ignore the file renaming instructions, but may have to install a sass-loader.
+
 ### Ensure Latest Version of Phoenix
 `mix local.hex`
 
