@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Pheonix Project.md",
+            "file": "new_phoenix_project.md",
             "mode": "preview"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pheonix Project.md",
+                "file": "new_phoenix_project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,10 +86,10 @@
     "width": 130.2312469482422
   },
   "lastOpenFiles": [
+    "new_phoenix_project.md",
     "Pheonix Project.md",
     "replace-nprogress-with-topbar.md",
     "Replace nprogress with topbar.md",
-    "new_phoenix_project.md",
     "deploy.md",
     "file_cleanup.md",
     "error_helpers.md",

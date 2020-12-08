@@ -101,7 +101,6 @@ Change the `app.scss` reference in `app.js` to `app.css`.
 import "../css/app.css"
 ```
 
-Contents of `app.css`. Note that the comments are required if you want to prohibit purgecss from running. ((*Please switch to the new `layers` mode for 2.0.*))
 ```css
 /* app.css */
 @import "tailwindcss/base";
