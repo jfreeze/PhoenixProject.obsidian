@@ -37,40 +37,74 @@ config :car_lot, CarLot.Mailers.PostmarkMailer,
   api_key: System.get_env("POSTMARK_SERVER_API_TOKEN")
 ```
 
-The `deploy.sh` script xxxx
+The `bin/deploy.sh` script is a simple script when the production server is also the build server. The production server has a github deploy key and keeps a local copy of the repo. This facilitates fast compile times when deploying.
 ```bash
 #!/bin/sh
 
-server="my_app"
+if [ ! $# == 5 ]; then
+  echo "Usage: $0 app server build_path secret elixir-code"
+  echo "  app:        Application name"
+  echo "  server:     Name of ssh server for build/deploy"
+  echo "  build_path: Directory of repo on server"
+  echo "  secret:     Pathname of shell with runtime secrets"
+  echo "  elixir:     Elixir eval to run before daemon"
+  exit
+fi
 
-# assumes local is ahead of upstream 
-git push
-ssh $server "(cd /apps/builds/<my_app>; git pull origin main/master)"
-ssh $server "source ~/.shrc; (cd /apps/builds/<my_app>; ./release.sh)"
+app=$1
+server=$2
+build_path=$3
+secret=$4
+elixir=$5
+
+c=`git rev-list --count HEAD`; sed -E -i .bak "s/@version +\"([0-9]+).([0-9]+).([0-9]+)\"/@version \"\1.\2.$c\"/" mix.exs
+rm -f mix.exs.bak
+git add mix.exs
+git commit -m "git commit version bump"
+git push origin main
+
+ssh $server "(cd $build_path; git pull origin main)"
+ssh $server "source ~/.shrc; (cd $build_path; ./bin/release.sh $app $build_path $secret $elixir)"
 ```
 
-The `release.sh` script
+The `deploy.sh` script that launches the above script sits in the main directory.
 ```bash
-#!//bin/sh
+#!/bin/sh
 
-cd /apps/builds/<my_app>
+./bin/deploy.sh my_app my_app /apps/builds/my_app /apps/secrets/my_app/my_app.prod.secret.env.sh "MyApp.Release.migrate"
+```
 
-. /apps/secrets/<my_app>/<my_app>.prod.secret.env.sh
+The `bin/release.sh` script is call on the production machine from the `deploy.sh` script.
 
-git pull origin main/master
+```bash
+#!//bin/sh -x
+
+app=$1
+build_path=$2
+secret=$3
+if [ $# == 4 ]; then
+  migration=$4
+fi
+
+. $secret
+
+cd $build_path
+
+git pull origin main
 
 MIX_ENV=prod mix deps.get --only prod
 MIX_ENV=prod mix compile
 (cd assets; npm i; npm run deploy)
-mix phx.digest
+MIX_ENV=prod mix phx.digest
+./_build/prod/rel/$app/bin/$app stop
+
 MIX_ENV=prod mix release
-
-./_build/prod/rel/<my_app>/bin/<my_app> eval "<MyApp>.Release.migrate"
-./_build/prod/rel/<my_app>/bin/<my_app> restart
-# ./_build/prod/rel/<my_app>/bin/<my_app> stop
-# ./_build/prod/rel/<my_app>/bin/<my_app> daemon
-
+if [ $# == 4 ]; then
+  ./_build/prod/rel/$app/bin/$app eval "$migration"
+fi
+./_build/prod/rel/$app/bin/$app daemon
 ```
+
 
 
 ## Add Github Deployment Key to Server
