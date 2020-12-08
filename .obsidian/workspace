@@ -10,8 +10,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "deploy.md",
-            "mode": "source"
+            "file": "new_phoenix_project.md",
+            "mode": "preview"
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "deploy.md",
+                "file": "new_phoenix_project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,10 +85,10 @@
     "width": 130.2312469482422
   },
   "lastOpenFiles": [
-    "deploy.md",
-    "file_cleanup.md",
     "new_phoenix_project.md",
     "Pheonix Project.md",
+    "deploy.md",
+    "file_cleanup.md",
     "error_helpers.md",
     "alpine_js_setup.md",
     "customize_environment.md",

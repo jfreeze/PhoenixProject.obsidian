@@ -1,4 +1,4 @@
-# New Phoenix Project Setup
+# New Phoenix Project Setup with TailwindCSS
 
 ### Ensure Latest Version of Phoenix
 `mix local.hex`
