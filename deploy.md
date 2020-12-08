@@ -78,7 +78,7 @@ The `deploy.sh` script that launches the above script sits in the main directory
 
 #### Release
 
-The `bin/release.sh` script is call on the production machine from the `deploy.sh` script.
+The `bin/release.sh` script is called on the production machine from the `deploy.sh` script.
 
 ```bash
 #!//bin/sh -x
