@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 203.00868225097656
+    "width": 203.00868225097656,
+    "collapsed": true
   },
   "right": {
     "id": "5d3a9811cd0b8907",
@@ -86,6 +87,7 @@
   },
   "lastOpenFiles": [
     "Pheonix Project.md",
+    "replace-nprogress-with-topbar.md",
     "Replace nprogress with topbar.md",
     "new_phoenix_project.md",
     "deploy.md",
@@ -93,7 +95,6 @@
     "error_helpers.md",
     "alpine_js_setup.md",
     "customize_environment.md",
-    "add_font_interval.md",
-    "notes-for-future-content.md"
+    "add_font_interval.md"
   ]
 }
