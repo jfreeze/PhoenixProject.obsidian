@@ -1,6 +1,11 @@
+Change this to an npm install.
+
 Add the following to `app.js`.
 
 ```javascript
+// app.js
+import "alpinejs"
+
 // let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken } })
 let liveSocket = new LiveSocket("/live", Socket, {
     dom: {
