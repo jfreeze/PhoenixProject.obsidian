@@ -88,6 +88,7 @@ cd css
 mv app.scss live_view.css
 touch app.css
 rm phoenix.css
+rm ../static/images/phoenix.png
 ```
 
 Remove the line `@import "./phoenix.css";` from `live_view.css`.
