@@ -27,8 +27,6 @@ npm install tailwindcss \
    postcss postcss-loader postcss-import \
    autoprefixer --save-dev
 
-npm install alpinejs
-
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
@@ -143,6 +141,8 @@ mix deps.get
 ```
 
 #### Test Your Config
+
+You can test your setup by running a production and development build of the app assets. A development build will have an `app.css` that is 3+MB in size while a production build will have an `app.css` under 10KB.
 
 ```bash
 cd assets

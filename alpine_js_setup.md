@@ -1,4 +1,10 @@
-Change this to an npm install.
+Install Alpine JS
+
+
+```bash
+cd assets
+npm install alpinejs
+```
 
 Add the following to `app.js`.
 
@@ -17,13 +23,4 @@ let liveSocket = new LiveSocket("/live", Socket, {
 })
 ```
 
-
-Import Alpine in `root.html.leex`. Note, get the latest version of AlpineJS from [https://github.com/alpinejs/alpine](https://github.com/alpinejs/alpine#install).
-
-```html
-<body class="font-sans">
-   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-   <%= @inner_content %>
-</body>
-```
 
