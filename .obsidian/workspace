@@ -10,8 +10,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "new_phoenix_project.md",
-            "mode": "source"
+            "file": "add_font_intervar.md",
+            "mode": "preview"
           }
         }
       }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 203.00868225097656,
-    "collapsed": true
+    "width": 203.00868225097656
   },
   "right": {
     "id": "5d3a9811cd0b8907",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "new_phoenix_project.md",
+                "file": "add_font_intervar.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,15 +85,15 @@
     "width": 130.2312469482422
   },
   "lastOpenFiles": [
-    "new_phoenix_project.md",
+    "add_font_intervar.md",
     "Pheonix Project.md",
+    "add_font_interval.md",
+    "new_phoenix_project.md",
     "alpine_js_setup.md",
     "replace-nprogress-with-topbar.md",
     "Replace nprogress with topbar.md",
     "deploy.md",
     "file_cleanup.md",
-    "error_helpers.md",
-    "customize_environment.md",
-    "add_font_interval.md"
+    "error_helpers.md"
   ]
 }
