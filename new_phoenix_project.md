@@ -99,7 +99,7 @@ module.exports = {
 }
 ```
 
-So for you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
+Up to this point, you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
 
 ### Configure `app.css`
 
@@ -130,7 +130,7 @@ import "../css/app.css"
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "live_view.css";
-/* @import "custom.css"; */
+/* @import "other-custom.css"; */
 ```
 
 ### Update the deploy script.
@@ -151,7 +151,7 @@ mix deps.get
 
 ### Test Your Config
 
-You can test your setup by running a production and development build of the app assets. A development build will have an `app.css` that is 3+MB in size while a production build will have an `app.css` under 10KB.
+You can test your setup by running a production and development build of the app assets. A development build will have a `priv/static/css/app.css` that is 3+MB in size while a production build will have a `priv/static/css/app.css` under 10KB.
 
 ```bash
 cd assets
