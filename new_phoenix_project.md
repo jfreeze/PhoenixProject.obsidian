@@ -163,6 +163,7 @@ mix phx.digest
 ```
 
 
-
+----
+For more information on setting up TailwindCSS, see the [excellent article by Mike Clark](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
 
 
