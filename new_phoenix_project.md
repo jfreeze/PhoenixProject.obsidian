@@ -1,6 +1,6 @@
 # New Phoenix Project Setup with TailwindCSS
 
-Note, these install instructions modify the default Phoenix project by opting to use PostCSS instead of SASS. If you choose to use SASS, you can ignore the file renaming instructions, but may have to install a sass-loader.
+Note, these install instructions modify the default Phoenix project by opting to use PostCSS instead of Sass. If you choose to use Sass, you can ignore the file renaming instructions, but will need to install sass-loader and add it to `assets/webpack.config.js`.
 
 ### Ensure Latest Version of Phoenix
 `mix local.hex`
@@ -18,7 +18,8 @@ mix ecto.create
 ```
 
 ### Install TailWindCSS
-This installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is ok to leave them in since they are purged from the production release if not used.
+This installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is OK to leave them in since they are purged from the production release if not used. The next-to-last command installs the Tailwind config and the last command install the full version of the Tailwind config file that I use as a reference when needed.
+
 ```bash
 cd assets
 
@@ -63,7 +64,25 @@ plugins: [
 
 ```
 
-#### Create `postcss.config.js`
+#### Configure Webpack to use PostCSS
+
+PostCSS is added to the asset pipeline by specifying it in `assets\webpack.config.js`. 
+
+In the `webpack.confi.js` file, find the `module:{ rules: [ ...` section and add `postcss-loader` immediately following `css-loader`. If you are using Sass, `sass-loader` will follow `postcss-loader`. (Note: order is important)
+```javascript
+// webpack.config.js
+   ...
+        {
+          test: /\.[s]?css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader'
+          ],
+        }
+```
+
+#### Create PostCSS config file
 
 ```bash
 touch postcss.config.js
@@ -80,7 +99,11 @@ module.exports = {
 }
 ```
 
+So for you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
+
 #### Configure `app.css`
+
+Put the default phx project CSS in its own `live_view.css` file.
 
 ```bash
 # cwd assets/
@@ -107,6 +130,7 @@ import "../css/app.css"
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "live_view.css";
+/* @import "custom.css"; */
 ```
 
 #### Update the deploy script.
@@ -118,23 +142,6 @@ import "../css/app.css"
     ...
   },
 ```
-
-#### Add `postcss-loader` to  WebPack (`webpack.config.js`)
-
-Find the `module:{ rules: [ ...` section in `webpack.config.js` and add `postcss-loader`. (Note: order is important)
-```javascript
-// webpack.config.js
-   ...
-        {
-          test: /\.[s]?css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'postcss-loader'
-          ],
-        }
-```
-
 
 #### Update Dependencies
 ```bash
