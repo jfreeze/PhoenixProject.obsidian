@@ -64,7 +64,7 @@ plugins: [
 
 ```
 
-#### Configure Webpack to use PostCSS
+### Configure Webpack to use PostCSS
 
 PostCSS is added to the asset pipeline by specifying it in `assets\webpack.config.js`. 
 
@@ -82,7 +82,7 @@ In the `webpack.confi.js` file, find the `module:{ rules: [ ...` section and add
         }
 ```
 
-#### Create PostCSS config file
+### Create PostCSS config file
 
 ```bash
 touch postcss.config.js
@@ -101,7 +101,7 @@ module.exports = {
 
 So for you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
 
-#### Configure `app.css`
+### Configure `app.css`
 
 Put the default phx project CSS in its own `live_view.css` file.
 
@@ -133,7 +133,7 @@ import "../css/app.css"
 /* @import "custom.css"; */
 ```
 
-#### Update the deploy script.
+### Update the deploy script.
 
 ```javascript
 // package.json
@@ -143,13 +143,13 @@ import "../css/app.css"
   },
 ```
 
-#### Update Dependencies
+### Update Dependencies
 ```bash
 cd ../..
 mix deps.get
 ```
 
-#### Test Your Config
+### Test Your Config
 
 You can test your setup by running a production and development build of the app assets. A development build will have an `app.css` that is 3+MB in size while a production build will have an `app.css` under 10KB.
 
