@@ -40,7 +40,22 @@ config :car_lot, CarLot.Mailers.PostmarkMailer,
 #### Deploy
 
 The `bin/deploy.sh` script is a simple script when the production server is also the build server. The production server has a github deploy key and keeps a local copy of the repo. This facilitates fast compile times when deploying.
+
+The deploy script updates the tiny version number with the git commit count and relies on `@version` existing in `mix.exs`.
+
+```elixir
+# mix.exs
+@version 1.2.3 # any comment
+
+def project do
+    [
+      app: :my_app,
+      version: @version,
+      ...
+```
+
 ```bash
+# bin/deploy.sh
 #!/bin/sh
 
 if [ ! $# == 5 ]; then
@@ -81,6 +96,7 @@ The `deploy.sh` script that launches the above script sits in the main directory
 The `bin/release.sh` script is called on the production machine from the `deploy.sh` script.
 
 ```bash
+# bin/release.sh
 #!//bin/sh -x
 
 app=$1
