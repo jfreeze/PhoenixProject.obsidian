@@ -99,7 +99,7 @@ module.exports = {
 }
 ```
 
-Up to this point, you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
+Up to this point you have configured your asset pipeline by configuring webpack to call `css-loader`-> `postcss-loader` and postcss to call `postcss-import` -> `tailwindcss` -> `autoprefixer`.
 
 ### Configure `app.css`
 
