@@ -12,7 +12,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
         },
 ```
 
-Add the Inter var font to `<head>` to the root HTML file.
+Add the Inter var font to `<head>` in the root HTML file.
 
 ```html
 <!-- root.html.leex -->
