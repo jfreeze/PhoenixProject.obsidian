@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "new_phoenix_project.md",
+            "file": "misc.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "new_phoenix_project.md",
+                "file": "misc.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,15 +85,15 @@
     "width": 130.2312469482422
   },
   "lastOpenFiles": [
-    "new_phoenix_project.md",
+    "misc.md",
     "Pheonix Project.md",
+    "new_phoenix_project.md",
+    "replace-nprogress-with-topbar.md",
     "deploy.md",
     "add_font_intervar.md",
     "add_font_interval.md",
     "alpine_js_setup.md",
-    "replace-nprogress-with-topbar.md",
     "Replace nprogress with topbar.md",
-    "file_cleanup.md",
-    "error_helpers.md"
+    "file_cleanup.md"
   ]
 }

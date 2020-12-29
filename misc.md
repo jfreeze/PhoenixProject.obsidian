@@ -1,11 +1,11 @@
 TailwindCSS Utility
 
 ```css
-.\? {
-  animation: \?wobble 0.5s ease-in-out alternate infinite;
+.\?\? {
+  animation: \?\?wobble 0.5s ease-in-out alternate infinite;
 }
 
-@keyframes \?wobble {
+@keyframes \?\?wobble {
   0% {
     box-shadow: inset 4px 4px rgb(236, 15, 170), inset -4px -4px rgb(236, 15, 170);
   }
