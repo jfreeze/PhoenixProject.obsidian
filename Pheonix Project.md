@@ -1,5 +1,5 @@
 ## Base Phoenix Project Creation
-- [Create a New Phoenix Project with TailwindCSS](new_phoenix_project)
+- [Create a New Phoenix Project with TailwindCSS and PostCSS](new_phoenix_project)
 - [Add Font `Inter var`](add_font_intervar)
 - [Configure for AlpineJS](alpine_js_setup.md)
 - [Replace nprogress with topbar](replace-nprogress-with-topbar.md)

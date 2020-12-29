@@ -1,6 +1,11 @@
-# New Phoenix Project Setup with TailwindCSS
+# New Phoenix Project Setup with TailwindCSS and PostCSS
 
-Note, these install instructions modify the default Phoenix project by opting to use PostCSS instead of Sass. If you choose to use Sass, you can ignore the file renaming instructions, but will need to install sass-loader and add it to `assets/webpack.config.js`.
+Note, these install instructions modify the default Phoenix project by 
+
+* adding TailwindCSS
+* switch from SASS to CSS and add PostCSS
+
+If you choose to use Sass, you can ignore the file renaming instructions, but will need to install sass-loader and add it to `assets/webpack.config.js`.
 
 ### Ensure Latest Version of Phoenix
 `mix local.hex`
