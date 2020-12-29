@@ -86,14 +86,14 @@
   },
   "lastOpenFiles": [
     "Pheonix Project.md",
+    "error_helpers.md",
+    "customize_environment.md",
+    "replace-nprogress-with-topbar.md",
+    "alpine_js_setup.md",
     "new_phoenix_project.md",
     "misc.md",
-    "replace-nprogress-with-topbar.md",
     "deploy.md",
     "add_font_intervar.md",
-    "add_font_interval.md",
-    "alpine_js_setup.md",
-    "Replace nprogress with topbar.md",
-    "file_cleanup.md"
+    "add_font_interval.md"
   ]
 }

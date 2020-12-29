@@ -3,7 +3,7 @@
 - [Add Font `Inter var`](add_font_intervar)
 - [Configure for AlpineJS](alpine_js_setup.md)
 - [Replace nprogress with topbar](replace-nprogress-with-topbar.md)
-- [Customize the environment](customize_environment.md)
+- [Customize `mix.exs` environment](customize_environment.md)
 - [Add custom error helpers](error_helpers)
 - [Add Authentication](pheonix_auth)
 - Migrate the db
@@ -24,4 +24,3 @@
 - add login menu
 - add sign-in page
 - add registration page
-- 
