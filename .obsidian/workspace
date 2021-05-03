@@ -4,14 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "cde6c34ddd396c0a",
+        "id": "52fffa99446f6023",
         "type": "leaf",
-        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Pheonix Project.md",
-            "mode": "preview"
+            "file": "misc.md",
+            "mode": "source"
           }
         }
       }
@@ -69,12 +68,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pheonix Project.md",
+                "file": "misc.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": false
               }
             }
           }
@@ -84,16 +85,17 @@
     "direction": "horizontal",
     "width": 130.2312469482422
   },
+  "active": "52fffa99446f6023",
   "lastOpenFiles": [
+    "misc.md",
+    "new_phoenix_project.md",
+    "deploy.md",
+    "notes-for-future-content.md",
+    "customize_environment.md",
     "Pheonix Project.md",
     "error_helpers.md",
-    "customize_environment.md",
     "replace-nprogress-with-topbar.md",
     "alpine_js_setup.md",
-    "new_phoenix_project.md",
-    "misc.md",
-    "deploy.md",
-    "add_font_intervar.md",
-    "add_font_interval.md"
+    "add_font_intervar.md"
   ]
 }
