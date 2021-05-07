@@ -49,6 +49,8 @@ npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
 
+(end of Webpack 4 specific instructions)
+
 #### If using Webpack 5...
 
 Replace `devDependencies` in `assets/package.json` with:
@@ -149,7 +151,7 @@ module.exports = (env, options) => {
 };
 ```
 
-Now, run the following to install TailwindCSS:
+**Now**, run the following to install TailwindCSS:
 
 ```bash
 cd assets
@@ -165,6 +167,7 @@ npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
 
+(end of Webpack 5 specific instructions)
 
 ### Customize TailWindCSS config
 Configure `purge` and `plugins` in `tailwind.config.js`
