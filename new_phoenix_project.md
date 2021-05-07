@@ -1,18 +1,20 @@
 # New Phoenix Project Setup with TailwindCSS and PostCSS
 
-Note, these install instructions modify the default Phoenix project by 
+These install instructions guide you through modifying the default Phoenix project to 
 
-* adding TailwindCSS
-* switch from SASS to CSS and add PostCSS
-
-If you choose to use Sass, you can ignore the file renaming instructions, but will need to install sass-loader and add it to `assets/webpack.config.js`.
+* add PostCSS
+* add TailwindCSS version 2
+* optionally switch from SASS to CSS
+* optionally move to Webpack 5
 
 ### Ensure Latest Version of Phoenix
-`mix local.hex`
 
-You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). Once you have the version, install Phoenix.
- 
-`mix archive.install hex phx_new 1.5.7`
+You may need to update your version of Phoenix. You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). (*These install steps were last updated for* **Phoenix 1.5.8**)
+
+```bash
+mix local.hex --force
+mix archive.install hex phx_new --force
+```
 
 ### Create Your Project
 
@@ -22,51 +24,167 @@ cd my_app
 mix ecto.create
 ```
 
-### Install TailWindCSS
-This installs TailwindCSS 2.0 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is OK to leave them in since they are purged from the production release if not used. The next-to-last command installs the Tailwind config and the last command install the full version of the Tailwind config file that I use as a reference when needed.
+### Install PostCSS, TailWindCSS, and Dependencies
+This installs TailwindCSS 2 as a PostCSS plugin. Several first-party plugins are included here if you need them. It is OK to leave them in since they are purged from the production release if not used. 
+
+The next-to-last command installs the Tailwind config and the last command installs the full version of the Tailwind config file that I use as a reference when needed.
+
+#### If using Webpack 4...
+
+(the current default in Phoenix 1.5.8) use the following to install TailWindCSS:
 
 ```bash
 cd assets
 
-npm install tailwindcss \
-   @tailwindcss/forms \
-   @tailwindcss/typography \
-   @tailwindcss/aspect-ratio \
-   postcss postcss-loader postcss-import \
-   autoprefixer --save-dev
+npm install \
+  postcss-nested@5.0.5 postcss@8.1.13 \
+  postcss-loader@4.2 postcss-import@12.0.1 \
+  tailwindcss \
+  @tailwindcss/forms \
+  @tailwindcss/typography \
+  @tailwindcss/aspect-ratio \
+  autoprefixer@10.0.2 --save-dev
 
 npx tailwindcss init
 npx tailwind init tailwindcss-full.js --full
 ```
 
+#### If using Webpack 5...
+
+Replace `devDependencies` in `assets/package.json` with:
+
+```javascript
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.1",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.4",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss": "^8.2.14",
+    "postcss-import": "^14.0.1",
+    "postcss-loader": "^5.2.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
+  }
+```
+
+Edit `webpack.config.js` to remove `HardSourceWebpackPlugin` and `OptimizeCSSAssetsPlugin`. Remember to delete both the `require` line and the instantiation line.
+
+```javascript
+  // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+...
+  // const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+...
+  // new OptimizeCSSAssetsPlugin({})
+...
+  // .concat(devMode ? [new HardSourceWebpackPlugin()] : [])
+
+```
+
+And update the constructors for `TerserPlugin` and `CopyWebpackPlugin`
+```javascript
+        new TerserPlugin({ parallel: true }),
+...
+        new CopyWebpackPlugin({
+          patterns: [
+            { from: "static/", to: "../" },
+          ]
+        })
+```
+
+Here's the full version of `webpack.config.js`
+```javascript
+const path = require('path');
+const glob = require('glob');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+module.exports = (env, options) => {
+  const devMode = options.mode !== 'production';
+
+  return {
+    optimization: {
+      minimizer: [
+        new TerserPlugin({ parallel: true }),
+      ]
+    },
+    entry: {
+      'app': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
+    },
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, '../priv/static/js'),
+      publicPath: '/js/'
+    },
+    devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
+    module: {
+      rules: [{
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader'
+          }
+        },
+        {
+          test: /\.[s]?css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+          ],
+        }
+      ]
+    },
+    plugins: [
+      new MiniCssExtractPlugin({ filename: '../css/app.css' }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: "static/", to: "../" },
+        ]
+      })
+    ]
+  }
+};
+```
+
+Now, run the following to install TailwindCSS:
+
+```bash
+cd assets
+
+npm install \
+  tailwindcss \
+  @tailwindcss/forms \
+  @tailwindcss/typography \
+  @tailwindcss/aspect-ratio \
+  --save-dev
+
+npx tailwindcss init
+npx tailwind init tailwindcss-full.js --full
+```
+
+
 ### Customize TailWindCSS config
-Add `purge` and `plugins`  to `tailwind.config.js`
+Configure `purge` and `plugins` in `tailwind.config.js`
 
 ```javascript
 // tailwind.config.js
-purge: {
-    content: [
-      "../lib/**/*.html.eex",
-      "../lib/**/*.html.leex",
-      "../lib/**/*.ex",
-      "./js/**/*.js"
-    ],
-
-    // These options are passed through directly to PurgeCSS
-    options: {
-      // whitelist: ['opacity-75'],
-    }
-  },
+  purge: [
+    "../lib/**/*.html.eex",
+    "../lib/**/*.html.leex",
+    "../lib/**/*.ex",
+    "./js/**/*.js"
+  ],
 
 ...
 
-plugins: [
-      require('@tailwindcss/forms'),
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio')
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
   ]
-
-
 ```
 
 ### Configure Webpack to use PostCSS
