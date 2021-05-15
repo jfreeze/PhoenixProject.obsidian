@@ -321,7 +321,7 @@ Update the watcher in `dev.exs`
       "-o",
       "../priv/static/css/app.css",
       "-w",
-      cd: "assets"
+      cd: Path.expand("../assets", __DIR__)
     ]
 ```
 
