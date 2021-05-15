@@ -6,6 +6,7 @@ These install instructions guide you through modifying the default Phoenix proje
 * add TailwindCSS version 2
 * optionally switch from SASS to CSS
 * optionally move to Webpack 5
+* optionally using TailwindCSS `JIT`
 
 Note: I have been unsuccessful with using Node version 16. You can switch to a previous version (14 or 15) using NVM.
 ### Ensure Latest Version of Phoenix
