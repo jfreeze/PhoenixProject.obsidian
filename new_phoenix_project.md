@@ -338,14 +338,18 @@ Here are a few additional scripts you may find useful, but are not required to u
 
 Also, the TailwindCSS docs says to launch the server with `NODE_ENV=development`. I haven't noticed that is a requirement, but there may be circumstances I haven't run across yet that require that.
 
-Launch the Phoenix server with
-
+To lauch with `NODE_ENV` run
 ```bash
 NODE_ENV=development mix phx.server
-```
-or
-```bash
+# or
 NODE_ENV=development iex -S mix phx.server
+```
+or to launch normally
+
+```bash
+mix phx.server
+# or
+iex -S mix phx.server
 ```
 
 If you have any information on running `JIT`, I would love to hear from you.
