@@ -11,7 +11,7 @@ These install instructions guide you through modifying the default Phoenix proje
 Note: I have been unsuccessful with using Node version 16. You can switch to a previous version (14 or 15) using NVM.
 ### Ensure Latest Version of Phoenix
 
-You may need to update your version of Phoenix. You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). (*These install steps were last updated for* **Phoenix 1.5.8**)
+You may need to update your version of Phoenix. You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). (*These install steps were last updated for* **Phoenix 1.5.9**)
 
 ```bash
 mix local.hex --force
