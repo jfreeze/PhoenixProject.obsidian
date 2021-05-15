@@ -7,6 +7,7 @@ These install instructions guide you through modifying the default Phoenix proje
 * optionally switch from SASS to CSS
 * optionally move to Webpack 5
 
+Note: I have been unsuccessful with using Node version 16. You can switch to a previous version (14 or 15) using NVM.
 ### Ensure Latest Version of Phoenix
 
 You may need to update your version of Phoenix. You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). (*These install steps were last updated for* **Phoenix 1.5.8**)
@@ -217,11 +218,11 @@ touch postcss.config.js
 ```javascript
 // postcss.config.js
 module.exports = {
-    plugins: {
-        'postcss-import': {},
-        tailwindcss: {},
-        autoprefixer: {}
-    }
+  plugins: [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ]
 }
 ```
 
@@ -288,6 +289,37 @@ cd ..
 mix phx.digest
 ```
 
+## Using TailwindCSS JIT
+
+A few notes on using JIT and TailwindCSS.
+There appear to be caching issues with Tailwind JIT and updates not being recognized. I haven't investigated this in detail yet, but below are the basic instructions for running TailwindCSS `JIT`.
+
+Enable `JIT` mode in your Tailwind config file.
+```javascript
+// tailwind.config.js
+module.exports = {
+  mode: 'jit',
+  purge: [
+  ...
+```
+
+Clear the `.cache` directory in `node_modules`
+
+```bash
+rm -rf assets/node_modules/.cache/
+```
+
+Launch the Phoenix server with
+
+```bash
+NODE_ENV=development mix phx.server
+```
+or
+```bash
+NODE_ENV=development iex -S mix phx.server
+```
+
+If you have any information on running `JIT`, I would love to hear from you.
 
 ----
 For more information on setting up TailwindCSS, see the [excellent article by Mike Clark](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
