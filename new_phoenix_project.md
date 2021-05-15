@@ -291,8 +291,16 @@ mix phx.digest
 
 ## Using TailwindCSS JIT
 
-A few notes on using JIT and TailwindCSS.
-There appear to be caching issues with Tailwind JIT and updates not being recognized. I haven't investigated this in detail yet, but below are the basic instructions for running TailwindCSS `JIT`.
+TailwindCSS has a JIT mode that is in preview.
+Things are still new, so there may be glitches.
+
+To setup `JIT` mode for TailwindCSS, do the following.
+
+Install `postcss-cli`.
+
+```bash
+npm install postcss-cli -D
+```
 
 Enable `JIT` mode in your Tailwind config file.
 ```javascript
@@ -303,11 +311,32 @@ module.exports = {
   ...
 ```
 
-Clear the `.cache` directory in `node_modules`
-
-```bash
-rm -rf assets/node_modules/.cache/
+Update the watcher in `dev.exs`
+```elixir
+# config/dev.exs
+  watchers: [
+    node: [
+      "node_modules/postcss-cli/bin/postcss",
+      "css/app.css",
+      "-o",
+      "../priv/static/css/app.css",
+      "-w",
+      cd: "assets"
+    ]
 ```
+
+TailwindCSS `JIT` mode should be working now.
+
+Here are a few additional scripts you may find useful, but are not required to use `JIT`.
+
+```javascript
+// packages.json
+    "dev": "TAILWIND_MODE=watch NODE_ENV=development postcss css/app.css -o ../priv/static/css/app.css -w",
+    "build:dev": "TAILWIND_MODE=build NODE_ENV=development postcss css/app.css -o ../priv/static/css/app.css",
+    "build:prod": "TAILWIND_MODE=build NODE_ENV=production postcss css/app.css -o ../priv/static/css/app.css",
+```
+
+Also, the TailwindCSS docs says to launch the server with `NODE_ENV=development`. I haven't noticed that is a requirement, but there may be circumstances I haven't run across yet that require that.
 
 Launch the Phoenix server with
 
