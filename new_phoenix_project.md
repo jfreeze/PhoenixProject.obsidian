@@ -12,7 +12,7 @@ If you choose to use Sass, you can ignore the file renaming instructions, but wi
 
 You can find the latest version of latest Pheonix at [Phoenix Installation](https://hexdocs.pm/phoenix/installation.html). Once you have the version, install Phoenix.
  
-`mix archive.install hex phx_new 1.5.7`
+`mix archive.install hex phx_new --force`
 
 ### Create Your Project
 

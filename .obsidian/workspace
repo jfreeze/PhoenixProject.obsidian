@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "52fffa99446f6023",
+        "id": "47a8a85177955b47",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "misc.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "misc.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,7 +81,7 @@
     "direction": "horizontal",
     "width": 130.2312469482422
   },
-  "active": "52fffa99446f6023",
+  "active": "47a8a85177955b47",
   "lastOpenFiles": [
     "misc.md",
     "new_phoenix_project.md",
